@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Django Site{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'hello/css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="/hello/">Home</a> |
+        <a href="/hello/profile/">Profile</a> |
+        <a href="/hello/logout/">Logout</a> |
+        <a href="/hello/login/">Login</a> |
+        <a href="/hello/signup/">Sign Up</a>
+    </nav>
+
+    <hr>
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <hr>
+
+    <footer>
+        &copy; 2025 My Django Site
+    </footer>
+</body>
+</html>
+
+
+
+
+{% comment %} {% extends "hello/base.html" %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+
+{% endblock %} {% endcomment %}

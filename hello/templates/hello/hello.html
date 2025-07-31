@@ -1,0 +1,17 @@
+
+
+
+
+{% extends "hello/base.html" %}
+
+{% block title %}Hello Template{% endblock %}
+
+{% block content %}
+<h1>Hello, {{ name }}!</h1>
+    <p>Here are some things you’re learning:</p>
+    <ul>
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
