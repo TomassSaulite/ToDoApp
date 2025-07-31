@@ -2,21 +2,13 @@
 {% block title %}Hello Template {% endblock %}
 {% block content %}
     <h1>Hello, {{ user.username }}!</h1>
-    <p>You are{{ age}} years old!</p>
-    {% if age >= 18 %}
-        <p>You are an adult.</p>
-    {% else %}
-        <p>You are not an adult yet.</p>
-    {% endif %}
-    <p>You like:</p>
-    <ul>
-        {% for hobby in hobbies %}
-            <li>{{ hobby }}</li>
-        {% endfor %}
-    </ul>
-    <form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Log Out</button>
+    {% if note_count == 1%}
+        <p>You have 1 note.</p>
+    {% elif note_count == 0%}
+        <p>You have no notes yet. Start adding some!</p>
+    {%else%}
+        <p>You have {{ note_count }} notes.</p>
+   {% endif %}
 {% endblock %}
 
 

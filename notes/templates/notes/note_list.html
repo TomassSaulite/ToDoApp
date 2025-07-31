@@ -20,7 +20,7 @@
         <small>{{ note.created_at }}</small>
         <form action="{% url 'remove_task' note.id %}" method="post" style="display:inline;">
                 {% csrf_token %}
-                <button class="small-btn" type="submit">❌</button>
+                <button style="background:none; border:none; color:blue; cursor:pointer; text-decoration:none;" class="small-btn" type="submit">❌</button>
         </form>
       </li>
     {% empty %}

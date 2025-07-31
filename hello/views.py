@@ -4,25 +4,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-
-
+from notes.models import Note
 
 
 def hello_world(request):
-    context = {
-        'name': 'ChatGPT User',
-        'items': ['Django', 'Python', 'Templates', 'Views']
-    }
-    return render(request, 'hello/hello.html', context)
+    return render(request, 'hello/hello.html')
+
 
 @login_required
 def user_profile(request, ):
-    context = {
-        'username': 'your_name_here',
-        'age': 20,
-        'hobbies': ['reading', 'coding', 'gaming']
-    }   
-    return render(request, 'hello/user_profile.html', context)
+    note_count = Note.objects.filter(user=request.user).count()
+    return render(request, 'hello/user_profile.html', {'note_count': note_count})
 
 def login_view(request):
     if request.method == 'POST':
@@ -64,3 +56,5 @@ def signup_view(request):
         login(request, user)
         return redirect('/hello/profile/')
     return render(request, 'hello/signup.html')
+
+
