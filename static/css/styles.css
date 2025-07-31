@@ -124,10 +124,6 @@ p.error {
     background-color: #7f8c8d;
 }
 
-
-
-
-
 @media (max-width: 600px) {
     main {
         margin: 1rem;
