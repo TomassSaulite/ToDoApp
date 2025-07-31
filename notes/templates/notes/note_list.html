@@ -3,12 +3,25 @@
 {% block content %}
   <h1>Your Notes</h1>
   <a href="{% url 'add_note' %}">➕ Add New Note</a>
-  <ul>
+  <ul style="list-style-type: none;">
     {% for note in notes %}
       <li>
         <strong>{{ note.title }}</strong><br>
         {{ note.content }}<br>
+        {% if note.is_completed %}
+          ✅
+        {% else %}
+            <form action="{% url 'mark_completed' note.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button class="small-btn" type="submit">Mark as Completed</button>
+            </form>
+        {% endif %}
+        <br>
         <small>{{ note.created_at }}</small>
+        <form action="{% url 'remove_task' note.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button class="small-btn" type="submit">❌</button>
+        </form>
       </li>
     {% empty %}
       <li>No notes yet. Create one!</li>
