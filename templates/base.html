@@ -10,6 +10,7 @@
         <a href="/hello/">Home</a> |
         {% if user.is_authenticated %}
         <a href="/hello/profile/">Profile</a>
+        <a href="{% url 'note_list' %}">My Notes</a>
         <a href="/hello/logout/">Logout</a>
         {% else %}
         <a href="/hello/login/">Login</a>
